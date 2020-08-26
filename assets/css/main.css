@@ -276,6 +276,9 @@ img {
   font-weight: normal;
 }
 
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:any-link {
+    color: #fff;
+}
 @media (min-width: 768px) {
   .navbar-custom .nav-item.dropdown .dropdown-menu {
     text-align: center;
