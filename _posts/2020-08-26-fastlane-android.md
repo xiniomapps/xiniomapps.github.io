@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Configuración Fastlane (Android)
-thumbnail-img: /assets/img/2020-08-26/fastlane.png
+thumbnail-img: /assets/img/fastlane.png
 cover-img: /assets/img/2020-08-26/cover.png
 tags: [jTracker, fastlane, android]
 ---
@@ -29,19 +29,15 @@ Se requiere generar y descargar una llave tipo JSON para poder aceder a Google
 Play Console desde fastlane. El proceso se describe en la [documentación oficial
 de fastlane](https://docs.fastlane.tools/getting-started/android/setup/#collect-your-google-credentials).
 
-
 Una vez descargada la llave, se deberá colocar en un nuevo directorio llamado `keys`
 en la carpeta raíz del proyecto. Este directorio **deberá ser excluido del control
 de versiones** (git):
 
 {% highlight text linenos %}
-# .gitignore
-
-# ignorar directorio keys:
 keys/
 {% endhighlight %}
 
-Podemos comprobar que nuestra llave funciona correctamente y que nos permite el acceso a Google Play 
+Podemos comprobar que nuestra llave funciona correctamente y que nos permite el acceso a Google Play
 de la siguiente manera:
 
 {% highlight text %}
@@ -52,7 +48,7 @@ Este es el resultado cuando funciona correctamente:
 
 ![Conexión de prueba a Google Play Store](/assets/img/2020-08-26/002.png){: .mx-auto.d-block :}
 
-### Instalar y configurar fastlane
+## Instalar y configurar fastlane
 
 Generar un archivo llamado ``Gemfile`` en la carpeta android de nuestro proyecto. Dentro de este archivo agregar las siguientes lineas:
 
@@ -70,7 +66,6 @@ bundle update
 ```
 
 Por último es necesario generar los archivos de configuración de fastlane:
-
 
 ```sh
 export LC_ALL="en_US.UTF-8"
@@ -98,11 +93,9 @@ tendremos dos archivos y una carpeta en ``android/fastlane``:
 - **metadata:** screenshots, iconos, descripciones, etc. En caso de que existieran
  en Google Play y hayamos configurado correctamente, estos se descargarán.
 
-
 La configuración de `Appfile` for defecto se muestra a continuación:
-{% highlight text linenos %}
-# Appfile:
 
+{% highlight text linenos %}
 json_key_file("../keys/jtracker.json")
 package_name("com.jtracker")
 {% endhighlight %}
@@ -112,8 +105,6 @@ uno para hacer el envío del bundle AAB al canal de pruebas internas y otro
 proceso para hacer el envío al canal beta:
 
 {% highlight text linenos %}
-# Fastfile:
-
 platform :android do
     desc "Enviar a canal Internal Testing en Google Play Store"
     lane :internal do
@@ -131,7 +122,7 @@ end
 
 Para generar el bundle y subir a pruebas internas hacemos lo siguiente:
 
-```
+```text
 bundle exec fastlane internal
 ```
 
@@ -140,7 +131,6 @@ Cabe mencionar que en cada ejecución tendremos que hacer ajustes en el archivo
 En una entrada futura de este blog automatizaremos esta parte.
 
 {% highlight text linenos %}
-# Extracto de android/app/build.gradle: 
     defaultConfig {
         applicationId "com.jtracker"
         minSdkVersion rootProject.ext.minSdkVersion
