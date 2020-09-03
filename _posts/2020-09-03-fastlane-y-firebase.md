@@ -2,7 +2,7 @@
 layout: post
 title: Configurar carril fastlane para Firebase (Android)
 thumbnail-img: /assets/img/fastlane.png
-tags: [jTracker, fastlane, android]
+tags: [jTracker, fastlane, android, firebase]
 ---
 
 
